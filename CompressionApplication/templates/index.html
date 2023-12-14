@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Compression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <p>This will take some time, depending on hardware, epochs, etc....</p>
+</div>
+
+<div class="container">
+    <h1>UI Compression</h1>
+
+    <form action="/submit" method="post">
+
+        <div class="section">
+            <h2>General</h2>
+            <label>Dataset Path: <input type="text" name="dataset_path" placeholder="Enter dataset path", value="/path/to/imagenet"></label>
+            <label>Model: 
+                <select name="model">
+                    <option value="resnet18">resnet18</option>
+                    {% for option in model_options %}
+                        {% if option != 'resnet18'%}
+                        <option value="{{ option }}">{{ option }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+
+        <div class="section">
+            <h2>Pruning</h2>
+            <label>Epochs: <input type="number" name="pruning_epochs" value="10"></label>
+            <label>Workers: <input type="number" name="pruning_workers" value="8"></label>
+            <label>Batch Size: <input type="number" name="pruning_batch_size" value="512"></label>
+            <label>Learning Rate: <input type="number" step="0.001" name="pruning_learning_rate" value="0.001"></label>
+            <label>Momentum: <input type="number" step="0.001" name="pruning_momentum" value="0.9"></label>
+            <label>Weight Decay: <input type="number" step="0.0001" name="pruning_weight_decay" value="0.0001"></label>
+            <label>Sparsity: <input type="number" step="0.01" name="pruning_sparsity" value="0.3"></label>
+        </div>
+
+        <div class="section">
+            <h2>Distillation</h2>
+            <label>Epochs: <input type="number" name="distillation_epochs" value="10"></label>
+            <label>Workers: <input type="number" name="distillation_workers" value="8"></label>
+            <label>Batch Size: <input type="number" name="distillation_batch_size" value="256"></label>
+            <label>Learning Rate: <input type="number" step="0.001" name="distillation_learning_rate" value="0.001"></label>
+            <label>Momentum: <input type="number" step="0.001" name="distillation_momentum" value="0.9"></label>
+            <label>Weight Decay: <input type="number" step="0.0001" name="distillation_weight_decay" value="0.0001"></label>
+            <label>Teacher Model:
+                <select name="teacher_model">
+                    <option value="resnet152">resnet152</option>
+                    {% for option in model_options %}
+                        {% if option != 'resnet152' %}
+                        <option value="{{ option }}">{{ option }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+
+        <div class="section">
+            <h2>Quantization</h2>
+            <label>Epochs: <input type="number" name="quantization_epochs" value="10"></label>
+            <label>Workers: <input type="number" name="quantization_workers" value="8"></label>
+            <label>Batch Size: <input type="number" name="quantization_batch_size" value="512"></label>
+            <label>Learning Rate: <input type="number" step="0.001" name="quantization_learning_rate" value="0.001"></label>
+            <label>Momentum: <input type="number" step="0.001" name="quantization_momentum" value="0.9"></label>
+            <label>Weight Decay: <input type="number" step="0.0001" name="quantization_weight_decay" value="0.0001"></label>
+            <label>Per-Channel: <input type="checkbox" name="per_channel"></label>
+        </div>
+
+        <button type="submit" onclick="showLoading()">Submit</button>
+    </form>
+</div>
+<script>
+    function showLoading() {
+        document.getElementById('loadingOverlay').style.display = 'flex';
+        document.getElementById('mainContent').style.opacity = '0.5';
+    }
+
+    function hideLoading() {
+        document.getElementById('loadingOverlay').style.display = 'none';
+        document.getElementById('mainContent').style.opacity = '1';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        hideLoading();  // Hide the loading overlay initially
+    });
+
+    // You can call hideLoading() when your content is fully loaded or after a specific action
+    // For example, after a form submission
+    document.querySelector('form').addEventListener('submit', function () {
+        showLoading();
+    });
+</script>
+
+</body>
+</html>
