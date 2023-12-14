@@ -1,5 +1,4 @@
-# Ｍｏｄｅｌ 
-# ℭ𝔬𝔪𝔭𝔯𝔢𝔰𝔰𝔦𝔬𝔫
+# Ｍｏｄｅｌ Cᴏᴍᴘʀᴇꜱꜱɪᴏɴ
 
 Code for compressing given pretrained model on ImageNet.
 Applies Pruning, Knowledge Distillation and Quantization.
