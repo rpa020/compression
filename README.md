@@ -1,6 +1,4 @@
-
-#【M】【o】【d】【e】【l】
-# ℭ𝔬𝔪𝔭𝔯𝔢𝔰𝔰𝔦𝔬𝔫
+【M】【o】【d】【e】【l】 ℭ𝔬𝔪𝔭𝔯𝔢𝔰𝔰𝔦𝔬𝔫
 
 Code for compressing given pretrained model on ImageNet.
 Applies Pruning, Knowledge Distillation and Quantization.
