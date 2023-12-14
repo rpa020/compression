@@ -4,7 +4,7 @@ Compress given pretrained model on ImageNet.
 Applies Pruning, Knowledge Distillation and Quantization.
 Comes with object-detection demo. 
 
-![](https://github.com/rpa020/compression/blob/main/od.gif)
+![](https://github.com/rpa020/compression/tree/main/images/od.gif)
 
 # Contents:
 
@@ -42,15 +42,13 @@ python UI.py
 
 * Models: Already compressed models
 
-![](https://github.com/rpa020/compression/blob/main/images/od.gif)
-
 # How to run compression application:
 
 `python compresser.py --sa resnet18 --ta resnet152 "/path/to/imagenet"` or `python UI.py`.
 After compressing, the available model can be loaded with torch.jit.load("model.ts")
 
 # Benchmark
-![](https://github.com/rpa020/compression/blob/main/accuracy.png)
-![](https://github.com/rpa020/compression/blob/main/reduction.png)
+![Alt text](https://github.com/rpa020/compression/tree/main/images/accuracy.png)
+![Alt text](https://github.com/rpa020/compression/tree/main/images/reduction.png)
 
 When running with a new model, make sure to testurn with 0 epochs for each compression method to testrun and observe if it's compressible with this application. 
