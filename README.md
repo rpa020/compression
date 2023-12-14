@@ -1,6 +1,6 @@
 # Ｍｏｄｅｌ Cᴏᴍᴘʀᴇꜱꜱɪᴏɴ
 
-Code for compressing given pretrained model on ImageNet.
+Compress given pretrained model on ImageNet.
 Applies Pruning, Knowledge Distillation and Quantization.
 Comes with object-detection demo. 
 
@@ -10,16 +10,16 @@ Comes with object-detection demo.
 * Compression Application:
 
 - prune.py -> Pruning program
-python prune.py *arguments /path/to/imagenet
+python prune.py *arguments "/path/to/imagenet"
 
 - distillation.py -> Knowledge Distillation program
-python distillation.py *arguments /path/to/imagenet
+python distillation.py *arguments "/path/to/imagenet"
 
 - quantization.py -> Quantization program
-python quantization.py *arguments /path/to/imagenet
+python quantization.py *arguments "/path/to/imagenet"
 
 - compresser.py -> Compresser application running all 3 mentioned programs
-python compresser.py *arguments /path/to/imagenet
+python compresser.py *arguments "/path/to/imagenet"
 
 - UI.py -> Simple user interface of compression application
 python UI.py
@@ -32,6 +32,12 @@ python UI.py
 
 * Object-Detection:
 
+- demo.py -> Run the demo application `python demo.py`
+
+- labels.py -> List over classes, used to classify in object detection
+
+- model.pth -> The model used in object detection
+
 
 * Models: Already compressed models
 
@@ -39,7 +45,7 @@ python UI.py
 # How to run compression application:
 
 `python compresser.py --sa resnet18 --ta resnet152 "/path/to/imagenet"` or `python UI.py`.
-After compressing, the available model can be loaded with torch.jit.load("model.ts)
+After compressing, the available model can be loaded with torch.jit.load("model.ts")
 
 # Benchmark
 
