@@ -72,6 +72,8 @@ def model_prepaper(model_name, device, quantize):
 
 def dataloader(path, batch_size, num_workers):
 
+    print("\033[93m  Loading data...\033[0m", end="\r")
+
     if os.path.exists(path):
         traindir = os.path.join(path, 'train')
         valdir = os.path.join(path, 'val')
@@ -104,17 +106,20 @@ def dataloader(path, batch_size, num_workers):
     cal_set = torch.utils.data.random_split(val_set, [len(val_set) - 1024, 1024])[1]
 
     train_loader = torch.utils.data.DataLoader(
-        train_set, batch_size=64, shuffle=True, num_workers=8, pin_memory=True, sampler=None, drop_last=True)
+        train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True, sampler=None, drop_last=True)
 
     val_loader = torch.utils.data.DataLoader(
-        val_set, batch_size=64, shuffle=False, num_workers=8, pin_memory=True, sampler=None, drop_last=True)
+        val_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True, sampler=None, drop_last=True)
 
     cal_loader = torch.utils.data.DataLoader(cal_set, batch_size=32, shuffle=False, drop_last=True)
 
+    print("Dataloading complete")
     return val_loader, train_loader, cal_loader
 
 
 def train_one_epoch(model, criterion, loader, optimizer, device):
+
+    blockPrint()
 
     model.train() #set network to train mode (batch normalization differs when training)
     
@@ -133,9 +138,12 @@ def train_one_epoch(model, criterion, loader, optimizer, device):
         loss.backward()
         optimizer.step()
 
+    enablePrint()
 
 def validate(model, loader, message):
     
+    blockPrint()
+
     model.eval()
     model.cuda()
     correct = 0
@@ -157,12 +165,13 @@ def validate(model, loader, message):
             correct += (predicted == label).sum().item()
 
 
+    enablePrint()
+    
     print(correct / total)
     f = open("acc.txt", "a")
     f.write(str(correct / total) + "\t" + message)
     f.write("\n")
     f.close()
-
 
         
 def accuracy(output, target, topk=(1,)):
@@ -180,3 +189,10 @@ def accuracy(output, target, topk=(1,)):
             correct_k = correct[:k].reshape(-1).float().sum(0, keepdim=True)
             res.append(correct_k.mul_(100.0 / batch_size))
         return res
+
+
+def blockPrint():
+    sys.stdout = open(os.devnull, 'w')
+
+def enablePrint():
+    sys.stdout = sys.__stdout__
