@@ -4,39 +4,40 @@ Compress given pretrained model on ImageNet.
 Applies Pruning, Knowledge Distillation and Quantization.
 Comes with object-detection demo. 
 
+![](https://github.com/rpa020/compression/blob/main/od.gif)
 
 # Contents:
 
 * Compression Application:
 
-- prune.py -> Pruning program
+`-` prune.py -> Pruning program
 python prune.py *arguments "/path/to/imagenet"
 
-- distillation.py -> Knowledge Distillation program
+`-` distillation.py -> Knowledge Distillation program
 python distillation.py *arguments "/path/to/imagenet"
 
-- quantization.py -> Quantization program
+`-` quantization.py -> Quantization program
 python quantization.py *arguments "/path/to/imagenet"
 
-- compresser.py -> Compresser application running all 3 mentioned programs
+`-` compresser.py -> Compresser application running all 3 mentioned programs
 python compresser.py *arguments "/path/to/imagenet"
 
-- UI.py -> Simple user interface of compression application
+`-` UI.py -> Simple user interface of compression application
 python UI.py
 
-- utils.py -> model-preparer, train_one_epoch, validate, etc.
+`-` utils.py -> model-preparer, train_one_epoch, validate, etc.
 
-- acc.txt -> records validation accuracy
+`-` acc.txt -> records validation accuracy
 
-- requirements.txt -> Lists of requirements. Application is run with python 3.8.13
+`-` requirements.txt -> Lists of requirements. Application is run with python 3.8.13
 
 * Object-Detection:
 
-- demo.py -> Run the demo application `python demo.py`
+`-` demo.py -> Run the demo application `python demo.py`
 
-- labels.py -> List over classes, used to classify in object detection
+`-` labels.py -> List over classes, used to classify in object detection
 
-- model.pth -> The model used in object detection
+`-` model.pth -> The model used in object detection
 
 
 * Models: Already compressed models
