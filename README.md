@@ -48,6 +48,8 @@ python UI.py
 After compressing, the available model can be loaded with torch.jit.load("model.ts")
 
 # Benchmark
+All models are compressed with default values. 
+
 ![](https://github.com/rpa020/compression/blob/main/images/accuracy.png)
 ![](https://github.com/rpa020/compression/blob/main/images/reduction.png)
 
