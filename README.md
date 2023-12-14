@@ -42,6 +42,7 @@ python UI.py
 
 * Models: Already compressed models
 
+![](https://github.com/rpa020/compression/blob/main/images/od.gif)
 
 # How to run compression application:
 
@@ -49,5 +50,7 @@ python UI.py
 After compressing, the available model can be loaded with torch.jit.load("model.ts")
 
 # Benchmark
+![](https://github.com/rpa020/compression/blob/main/accuracy.png)
+![](https://github.com/rpa020/compression/blob/main/reduction.png)
 
 When running with a new model, make sure to testurn with 0 epochs for each compression method to testrun and observe if it's compressible with this application. 
