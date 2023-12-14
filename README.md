@@ -6,7 +6,7 @@ Comes with object-detection demo.
 
 ![](https://github.com/rpa020/compression/blob/main/images/od.gif)
 
-# Contents:
+# Content:
 
 * Compression Application:
 
