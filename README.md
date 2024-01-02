@@ -1,7 +1,6 @@
 # Ｍｏｄｅｌ Cᴏᴍᴘʀᴇꜱꜱɪᴏɴ
 
-Compress given pretrained model on ImageNet.
-Applies Pruning, Knowledge Distillation and Quantization. The compression will reduce the resource requirements (memory and GFLOPS) enabling the model to be used in low-resource environments like edge device, phone, autonomous vechiles etc. Reducing the resources needed effectively lower the carbon footprint, especially at scale. See benchmark section for specific results. 
+Compress given pretrained model on ImageNet, by applying Pruning, Knowledge Distillation and Quantization. The compression will reduce the resource requirements (memory and GFLOPS) enabling the model to be used in low-resource environments like edge device, phone, autonomous vechiles etc. In compressing a model, we effectively reduce the carbon footprint, especially at scale. See benchmark section for specific results. 
 
 Comes with object-detection demo. 
 
